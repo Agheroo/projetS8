@@ -1,0 +1,107 @@
+:root{
+  --main-bg-color: linear-gradient(#1b1b1b,#131313 );
+  --green-bg : #73c773;
+  --main-black-color: #131313;
+  --main-white-color: #e0e0e0;
+}
+
+*{
+  padding:0;
+  margin:0;
+}
+
+body {
+  background: var(--main-bg-color);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+h1, h2, a, p {
+  color:var(--main-white-color);
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  text-decoration: none;
+}
+
+.navbar{
+  display:flex;
+  align-items: center;
+  width:100%;
+  height: 4em;
+  justify-content: space-between;
+
+  border-bottom: solid 2px var(--main-white-color);
+  background-color:black;
+}
+
+.navbar-left{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:1em;
+  height:100%;
+}
+#app-title{
+  font-size:28px;
+  width:100%;
+  height:100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-mid{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+  padding:1em;
+  height:100%;
+}
+.navbar-mid > *{
+  height:100%;
+  padding:0 2em;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px white;
+
+  z-index: 0;
+}
+.navbar-mid a{
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+
+.navbar-right{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:1em;
+  height:100%;
+}
+
+.main-content{
+  display:flex;
+  flex-direction:column;
+
+  width:100%;
+  padding:2em;
+
+  align-items: center;
+}
+
+
+.navbar-mid-link:hover{
+  background-color: var(--main-white-color);
+  color:var(--main-black-color);
+}
+.navbar-mid-link:hover .underline-nav{
+  width:100%;
+}
