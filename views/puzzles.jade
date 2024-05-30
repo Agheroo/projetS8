@@ -3,8 +3,8 @@ extends layout
 block form
   .form-container
     .form__group
-      input(type="text", class="input-group__input", placeholder = "Topic")#myInput.form__field
-      label(class="input-group__label", for="myInput").form__label Topic
+      input(type="text", class="input-group__input", placeholder = "Topic")#topic-input.form__field
+      label(class="input-group__label", for="topic-input").form__label Topic
 
     br
     h1 Difficulté
@@ -23,8 +23,7 @@ block form
         h2 Hard
         p Pour le challenge
     br
-    span.form-separator
-    br
+
 
     //TODO : Link with back end send form
     .card-container-bottom
