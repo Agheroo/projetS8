@@ -1,8 +1,9 @@
 :root{
   --main-bg-color: linear-gradient(#1b1b1b,#131313 );
-  --green-bg : #73c773;
   --main-black-color: #131313;
   --main-white-color: #e0e0e0;
+  --main-blue-color: #73d9e0;
+  --main-green-color: #61da67;
 }
 
 *{
@@ -20,12 +21,27 @@ body {
   flex-direction:column;
   align-items: center;
 }
+.main-content{
+  display:flex;
+  flex-direction:column;
 
-h1, h2, a, p {
+  padding:2em;
+
+  align-items: center;
+}
+h1, h2, a, p, ul ,li {
   color:var(--main-white-color);
   font-family: 'Roboto Mono';
   font-style: normal;
   text-decoration: none;
+  list-style: none;
+}
+#app-title{
+  font-size:28px;
+  width:100%;
+  height:100%;
+  display: flex;
+  align-items: center;
 }
 
 .navbar{
@@ -38,7 +54,6 @@ h1, h2, a, p {
   border-bottom: solid 2px var(--main-white-color);
   background-color:black;
 }
-
 .navbar-left{
   display:flex;
   justify-content: center;
@@ -46,14 +61,12 @@ h1, h2, a, p {
   padding:1em;
   height:100%;
 }
-#app-title{
-  font-size:28px;
-  width:100%;
-  height:100%;
-  display: flex;
-  align-items: center;
-}
 
+
+
+/********************/
+/*    NAVBAR        */
+/********************/
 .navbar-mid{
   display:flex;
   flex-direction: row;
@@ -77,8 +90,6 @@ h1, h2, a, p {
 .navbar-mid a{
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-
-
 .navbar-right{
   display:flex;
   justify-content: center;
@@ -87,21 +98,86 @@ h1, h2, a, p {
   height:100%;
 }
 
-.main-content{
+
+
+/********************/
+/*    WELCOME-PAGE  */
+/********************/
+
+#summary{
+  margin: 5em 0;
   display:flex;
-  flex-direction:column;
-
-  width:100%;
-  padding:2em;
-
+  flex-direction: row;
+  justify-content: space-evenly;
+  width:80em;
+}
+.card{
+  padding:1em;
+  border: solid white 1px;
+  display:flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  width:20em;
+
+  border-radius:0.7em;
+}
+.card h2{
+  margin-bottom:1em;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.card-container-bottom{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width:100%;
+
+  margin-top:2em;
+}
+.card-container-bottom .button{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:9em;
+  height:2em;
+  border: solid 1px var(--main-white-color);
+  border-radius:0.4em;
+  padding:0.6em;
+
+  font-size: 14px;
+
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 
+
+
+/********************/
+/*    ANIMATIONS    */
+/********************/
 .navbar-mid-link:hover{
   background-color: var(--main-white-color);
   color:var(--main-black-color);
 }
 .navbar-mid-link:hover .underline-nav{
   width:100%;
+}
+#welcome-phrase{
+  opacity: 0;
+  animation: welcome-phrase 1s forwards;
+  position:relative;
+}
+.card-container-bottom .button:hover{
+  background-color: black;
+  color: var(--main-blue-color);
+}
+
+
+
+@keyframes welcome-phrase{
+  from{opacity:0; top : 20px;}
+  to{opacity:1; top : 0;}
 }

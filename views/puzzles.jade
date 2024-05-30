@@ -1,0 +1,31 @@
+extends layout
+
+block main-content
+  div.main-content
+
+    h1 #{puzzle_name}
+
+    //TODO : list of puzzles according to back end
+    ul
+        each puzzle in puzzles
+            li= puzzle.name
+
+
+
+block navbar
+  div.navbar 
+    div.navbar-left
+      a#app-title(href = "/") #{app_name}
+
+
+    div.navbar-mid
+      // TODO: put a list of all links of the site linked with back-end here
+      // with a for loop 
+      a.navbar-mid-link(href = "/puzzles") Puzzles
+      a.navbar-mid-link(href = "/Users") Users
+      a.navbar-mid-link(href = "/leaderboard") Leaderboard
+
+
+    div.navbar-right
+      // TODO: link with connexion link with back-end here
+      a(href = "/connect") Connexion
