@@ -3,12 +3,18 @@
   --main-black-color: #131313;
   --main-white-color: #e0e0e0;
   --main-blue-color: #73d9e0;
+  --main-purple-color: #b749c5;
+  --main-gray-color: #7a7a7a;
   --main-green-color: #61da67;
+  --dark-blue-color: #4274d1;
+  --dark-blue-bg-color: #161c3d;
 }
 
 *{
   padding:0;
   margin:0;
+  color:var(--main-white-color);
+  font-family: 'Roboto Mono';
 }
 
 body {
@@ -25,8 +31,8 @@ body {
   display:flex;
   flex-direction:column;
 
-  padding:2em;
-
+  padding:2em 0 ;
+  width:100%;
   align-items: center;
 }
 h1, h2, a, p, ul ,li {
@@ -44,6 +50,10 @@ h1, h2, a, p, ul ,li {
   align-items: center;
 }
 
+
+/********************/
+/*    NAVBAR        */
+/********************/
 .navbar{
   display:flex;
   align-items: center;
@@ -61,12 +71,6 @@ h1, h2, a, p, ul ,li {
   padding:1em;
   height:100%;
 }
-
-
-
-/********************/
-/*    NAVBAR        */
-/********************/
 .navbar-mid{
   display:flex;
   flex-direction: row;
@@ -103,39 +107,53 @@ h1, h2, a, p, ul ,li {
 /********************/
 /*    WELCOME-PAGE  */
 /********************/
-
 #summary{
   margin: 5em 0;
   display:flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width:80em;
+  width:80%;
 }
-.card{
-  padding:1em;
-  border: solid white 1px;
+.card{  
+  border: solid 1px var(--main-white-color);
+  border-width:1px;
+  border-style:solid;
   display:flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  width:20em;
+  width:20%;
 
   border-radius:0.7em;
+  transition:box-shadow 0.5s, border-radius 0.2s;
+
 }
 .card h2{
-  margin-bottom:1em;
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
+.card-container-top{
+  border-bottom: solid 1px var(--main-white-color);
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
 
+  padding:0.5em 0;
+}
+.card-container-mid-bottom{
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  height:100%;
+  padding:1em;
+}
 .card-container-bottom{
   display:flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin-top:3em;
   width:100%;
-
-  margin-top:2em;
 }
 .card-container-bottom .button{
   display:flex;
@@ -149,11 +167,101 @@ h1, h2, a, p, ul ,li {
 
   font-size: 14px;
 
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-radius 0.2s ease-in-out;
 }
 
 
 
+/****************************/
+/*    PUZZLES & USERS PAGE  */
+/****************************/
+.form-container{
+  padding:2em;
+  width:60%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border:solid 2px var(--main-white-color);
+  margin:2em;
+  border-radius: 1em;
+
+  animation: form-animation 15s alternate infinite linear;
+}
+.underlined-color{
+  color:var(--main-green-color);
+}
+.difficulty-container {
+  width:90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.difficulty-container > div {
+  flex: 1;
+  padding: 0.5rem;
+}
+.difficulty-container label:hover{
+  background-color: var(--dark-blue-bg-color);
+  border-radius:0;
+}
+input[type="radio"] {
+  display: none;
+  &:not(:disabled) ~ label {
+    cursor: pointer;
+  }
+}
+.form-separator{
+  height:2px;
+  width:90%;
+  background-color: var(--main-white-color);
+}
+.difficulty-container label {
+  height: 100%;
+  display: block;
+  border: 2px solid var(--main-white-color);
+  border-radius: 12px;
+  padding: 0.8em;
+  margin-bottom: 1rem;
+  width:20%;
+
+  text-align: center;
+  position: relative;
+
+  transition: border-radius 0.1s ease-in-out;
+}
+input[type="radio"]:checked + label {
+  background: var(--dark-blue-color);
+  box-shadow: 0px 0px 20px hsla(221, 62%, 75%, 0.75);
+  border-radius: 0;
+}
+
+/********************/
+/*    LEADERBOARD   */
+/********************/
+
+
+.leaderboard{
+  width:60%;
+  padding:0;
+  border-collapse: collapse;
+  border:solid 2px var(--main-white-color);
+  margin:2em;
+
+  animation: form-animation 15s alternate infinite linear;
+}
+.leaderboard td{
+  color:var(--light-text-color);
+  padding: 1em 0.7em;
+  text-align: center;
+}
+.leaderboard tr{
+  border:solid 1px var(--main-white-color);
+  animation: form-animation 15s alternate infinite linear;
+}
+.leaderboard th{
+  color:var(--main-purple-color);
+  padding:1em;
+}
 
 /********************/
 /*    ANIMATIONS    */
@@ -165,19 +273,138 @@ h1, h2, a, p, ul ,li {
 .navbar-mid-link:hover .underline-nav{
   width:100%;
 }
-#welcome-phrase{
+.welcome-phrase{
   opacity: 0;
   animation: welcome-phrase 1s forwards;
   position:relative;
 }
+.brief-animated{
+  opacity: 0;
+  animation:welcome-phrase 1s forwards;
+  animation-delay: 0.5s;
+
+}
 .card-container-bottom .button:hover{
   background-color: black;
   color: var(--main-blue-color);
+  border: solid 1px var(--main-blue-color);
+  border-radius:0;
+}
+.card:hover{
+  box-shadow: -1em 2em black;
+  border-image: var(--main-white-color);
+  border-radius:0;
+  animation: border-coloring 1.5s alternate infinite;
+}
+.card:hover .card-container-top{
+  animation: border-coloring-bottom 1.5s alternate infinite;
 }
 
-
+@keyframes border-coloring{
+  from{border: solid 1px var(--main-white-color);}
+  to{border: solid 1px var(--main-blue-color);}
+}
+@keyframes border-coloring-bottom{
+  from{border-bottom: solid 1px var(--main-white-color);}
+  to{border-bottom: solid 1px var(--main-blue-color);}
+}
 
 @keyframes welcome-phrase{
   from{opacity:0; top : 20px;}
   to{opacity:1; top : 0;}
+}
+
+@keyframes form-animation{
+  0%{border-color: var(--main-white-color);}
+  20%{border-color: var(--main-blue-color);}
+  40%{border-color: var(--dark-blue-color);}
+  60%{border-color: var(--main-purple-color);}
+  80%{border-color: var(--dark-blue-color);}
+  100%{border-color: var(--main-blue-color);}
+}
+
+
+.title-div h1 {
+  color: #fff;
+  font-family: 'Roboto Mono';
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid var(--main-white-color); /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 1.2s steps(9, end),
+    blink-caret .8s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--main-white-color) }
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 90%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--main-white-color);
+  outline: 0;
+  font-size: 1.3rem;
+  color: var(--main-white-color);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: var(--main-gray-color);
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: var(--main-blue-color);
+    font-weight:700;    
+  }
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, var(--main-blue-color),var(--main-purple-color));
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
 }

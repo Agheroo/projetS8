@@ -1,31 +1,58 @@
 extends layout
 
+block form
+  .form-container
+    .form__group
+      input(type="text", class="input-group__input", placeholder = "Topic")#myInput.form__field
+      label(class="input-group__label", for="myInput").form__label Topic
+
+    br
+    h1 Difficulté
+    br
+    form.difficulty-container
+      input(input type="radio", name="select-difficulty", value="0")#radio-easy
+      label(for="radio-easy")
+        h2 Easy
+        p On s'échauffe un peu
+      input(input type="radio", name="select-difficulty", value="1")#radio-medium
+      label(for="radio-medium")
+        h2 Medium
+        p Histoire de réviser
+      input(input type="radio", name="select-difficulty", value="2")#radio-hard
+      label(for="radio-hard")
+        h2 Hard
+        p Pour le challenge
+    br
+    span.form-separator
+    br
+
+    //TODO : Link with back end send form
+    .card-container-bottom
+      a.button(href = "/") Rechercher
+    
+
 block main-content
   div.main-content
+    h2.welcome-phrase Obtenez <span class = "underlined-color">l'essentiel</span> des informations d'un puzzle dans cette rubrique
+    br
+    p.brief-animated Recherchez le puzzle de votre choix avec les critères ci-dessous et obnubilez-vous par les statistiques !
 
-    h1 #{puzzle_name}
-
-    //TODO : list of puzzles according to back end
-    ul
-        each puzzle in puzzles
-            li= puzzle.name
+    block form
 
 
 
 block navbar
-  div.navbar 
-    div.navbar-left
+  .navbar 
+    .navbar-left
       a#app-title(href = "/") #{app_name}
 
 
-    div.navbar-mid
-      // TODO: put a list of all links of the site linked with back-end here
-      // with a for loop 
-      a.navbar-mid-link(href = "/puzzles") Puzzles
-      a.navbar-mid-link(href = "/Users") Users
-      a.navbar-mid-link(href = "/leaderboard") Leaderboard
+    .navbar-mid
+      a.navbar-mid-link(href = "/") Accueil
+      each page in pages
+        a.navbar-mid-link(href = page.link) #{page.name}
 
 
-    div.navbar-right
+    .navbar-right
       // TODO: link with connexion link with back-end here
       a(href = "/connect") Connexion

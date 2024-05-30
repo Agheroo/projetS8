@@ -2,23 +2,25 @@ extends layout
 
 block description 
   #summary
-      // TODO: put a list of all links with their desc linked with back-end here
-
       each page in pages
         .card
-          h2= page.name
-          p= page.desc
-          .card-container-bottom
-            a.button(href = page.link) En savoir plus
+          .card-container-top
+            h2= page.name
+          .card-container-mid-bottom
+            .card-container-mid
+              p= page.desc
+            .card-container-bottom
+              a.button(href = page.link) En savoir plus
       
 
 
 block main-content
   .main-content
 
-    h1 #{app_name}
+    .title-div
+      h1 #{app_name}
     br
-    h2#welcome-phrase Bienvenue dans l'espace de visualisation des logs
+    h2.welcome-phrase Bienvenue dans l'espace de visualisation des logs
 
     block description
 
@@ -30,11 +32,9 @@ block navbar
 
 
     .navbar-mid
-      // TODO: put a list of all links of the site linked with back-end here
-      // with a for loop 
-      a.navbar-mid-link(href = "/puzzles") Puzzles
-      a.navbar-mid-link(href = "/Users") Users
-      a.navbar-mid-link(href = "/leaderboard") Leaderboard
+      a.navbar-mid-link(href = "/") Accueil
+      each page in pages
+        a.navbar-mid-link(href = page.link) #{page.name}
 
 
     .navbar-right

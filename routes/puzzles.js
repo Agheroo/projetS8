@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
+/* GET puzzles listing. */
 router.get('/', function(req, res, next) {
   res.render('puzzles', 
   {app_name : "[Logs-it]",
-    puzzles : [{name : "Linux", id : 0},{name : "Database", id : 1}, {name : "Programmation C", id : 2}],
-    
-                        
-
+    pages : [{name: "Puzzles", desc: "Apprenez-en plus sur les performances des utilisateurs sur le puzzle de votre choix !", link: "/puzzles"},
+            {name: "Users", desc: "Vous êtes curieux du travail qu'a produit un utilisateur en particulier ?", link: "/users"},
+            {name: "Leaderboard", desc: "Envie de faire partie des meilleurs ? Regardez où vous en êtes dans le classement !", link: "/leaderboard"}]
+                      
     });
 });
 
