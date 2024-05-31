@@ -238,8 +238,6 @@ input[type="radio"]:checked + label {
 /********************/
 /*    LEADERBOARD   */
 /********************/
-
-
 .leaderboard{
   width:60%;
   padding:0;
@@ -251,17 +249,29 @@ input[type="radio"]:checked + label {
   animation: form-animation 15s alternate infinite linear;
 }
 .leaderboard td{
+  height:2em;
   color:var(--light-text-color);
   padding: 1em 0.7em;
   text-align: center;
 }
 .leaderboard tr{
+
   border:solid 1px var(--main-white-color);
   animation: form-animation 15s alternate infinite linear;
 }
 .leaderboard th{
   color:var(--main-purple-color);
   padding:1em;
+}
+.download-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.download-container img{
+  height:auto;
+  width:2em;
 }
 
 /********************/
