@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var puzzlesRouter = require('./routes/puzzles');
 var leaderboardRouter = require('./routes/leaderboard');
 var puz_tempRouter = require('./routes/puzzle-temp')
+var user_tempRouter = require('./routes/users-temp');
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.use('/users', usersRouter);
 app.use('/puzzles', puzzlesRouter);
 app.use('/leaderboard',leaderboardRouter);
 app.use('/puzzle-temp',puz_tempRouter);
+app.use('/users-temp',user_tempRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
