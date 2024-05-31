@@ -155,6 +155,9 @@ h1, h2, a, p, ul ,li {
   margin-top:3em;
   width:100%;
 }
+.card-container-bottom button{
+  background-color: transparent;
+}
 .card-container-bottom .button{
   display:flex;
   align-items: center;
@@ -300,6 +303,7 @@ input[type="radio"]:checked + label {
   color: var(--main-blue-color);
   border: solid 1px var(--main-blue-color);
   border-radius:0;
+  cursor:pointer;
 }
 .card:hover{
   box-shadow: -1em 2em black;

@@ -1,24 +1,24 @@
 extends layout
 
 block form
-  .form-container
+  form(action="/puzzles", method="GET").form-container
     .form__group
-      input(type="text", class="input-group__input", placeholder = "Topic")#topic-input.form__field
+      input(type="text", name="topic", class="input-group__input", placeholder = "Topic")#topic-input.form__field
       label(class="input-group__label", for="topic-input").form__label Topic
 
     br
     h1 Difficulté
     br
-    form.difficulty-container
-      input(input type="radio", name="select-difficulty", value="0")#radio-easy
+    div.difficulty-container
+      input(input type="radio", name="difficulty", value="0")#radio-easy
       label(for="radio-easy")
         h2 Easy
         p On s'échauffe un peu
-      input(input type="radio", name="select-difficulty", value="1")#radio-medium
+      input(input type="radio", name="difficulty", value="1")#radio-medium
       label(for="radio-medium")
         h2 Medium
         p Histoire de réviser
-      input(input type="radio", name="select-difficulty", value="2")#radio-hard
+      input(input type="radio", name="difficulty", value="2")#radio-hard
       label(for="radio-hard")
         h2 Hard
         p Pour le challenge
@@ -27,7 +27,39 @@ block form
 
     //TODO : Link with back end send form
     .card-container-bottom
-      a.button(href = "/puzzle-temp") Rechercher
+      button(type="submit").button Rechercher
+
+
+block puzzle-list
+  if(puzzles.length == 0)
+    p Rien n'a été trouvé pour la recherche
+  
+  else
+    - let diffstr;
+    table.leaderboard#puzzle-list
+          thead
+          tr
+            th Thème 
+            th Score moyen 
+            th Difficulté
+            th Référence
+
+          each puzzle in puzzles
+            if puzzle.difficulty == 0
+              - diffstr = "Easy";
+            else if puzzle.difficulty == 1
+              - diffstr = "Medium";
+            else if puzzle.difficulty == 2
+              - diffstr = "Hard";
+
+
+            tr
+              td #{puzzle.topic}
+              td #{puzzle.avgScore}
+              td #{diffstr}
+              td.download-container 
+                a(href = "/puzzle-temp")
+                  img(src = "../images/right-arrow.png")
     
 
 block main-content
@@ -37,6 +69,8 @@ block main-content
     p.brief-animated Recherchez le puzzle de votre choix avec les critères ci-dessous et obnubilez-vous par les statistiques !
 
     block form
+
+    block puzzle-list
 
 
 

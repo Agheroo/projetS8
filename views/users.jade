@@ -10,7 +10,30 @@ block form
     //TODO : Link with back end send form
     .card-container-bottom
       a.button(href = "/users-temp") Rechercher
+
+block users-list
+  if(users.length == 0)
+    p Aucun utilisateur ne correspond
+  
+  else
+    table.leaderboard#puzzle-list
+          thead
+          tr
+            th Nom
+            th Rang 
+            th Score moyen 
+            th Référence
+
+          each user in users
+            tr
+              td #{user.name}
+              td #{user.rank}
+              td #{user.avgScore}
+              td.download-container 
+                a(href = "/puzzle-temp")
+                  img(src = "../images/right-arrow.png")
     
+
 
 block main-content
   div.main-content
@@ -19,6 +42,8 @@ block main-content
     p.brief-animated Recherchez le nom d'un joueur choix et regardez ses performances (les détails de ses logs seront disponibles)
 
     block form
+
+    block users-list
 
 
 
