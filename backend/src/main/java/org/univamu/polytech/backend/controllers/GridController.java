@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.univamu.polytech.backend.entities.Grid;
+import org.univamu.polytech.backend.entities.GridPlayer;
 import org.univamu.polytech.backend.repositories.GridRepository;
 
 import jakarta.websocket.server.PathParam;
@@ -28,8 +29,13 @@ public class GridController {
     }
 
     @GetMapping("/{id}")
-    public void getGrid(@PathParam("id") Integer id) {
-        gridRepository.findById(id);
+    public Grid getGrid(@PathParam("id") Integer id) {
+        return gridRepository.findById(id).get();
+    }
+
+    @GetMapping("/{id}/gridPlayers")
+    public List<GridPlayer> getGridPlayersFromGrid(@PathParam("id") Integer id) {
+        return gridRepository.findById(id).get().getGridPlayers();
     }
 
     @PostMapping("")

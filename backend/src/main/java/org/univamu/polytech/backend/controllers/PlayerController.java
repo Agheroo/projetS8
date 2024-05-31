@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.univamu.polytech.backend.entities.GridPlayer;
 import org.univamu.polytech.backend.entities.Player;
 import org.univamu.polytech.backend.repositories.PlayerRepository;
 
@@ -28,8 +29,13 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public void getPlayer(@PathParam("id") String id) {
-        playerRepository.findById(id);
+    public Player getPlayer(@PathParam("id") String id) {
+        return playerRepository.findById(id).get();
+    }
+
+    @GetMapping("/{id}/gridPlayers")
+    public List<GridPlayer> getGridPlayersFromPlayer(@PathParam("id") String id) {
+        return playerRepository.findById(id).get().getGridPlayers();
     }
 
     @PostMapping("")
