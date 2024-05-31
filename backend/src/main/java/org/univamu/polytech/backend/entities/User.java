@@ -1,29 +1,25 @@
-package org.univamu.polytech.backend.data;
+package org.univamu.polytech.backend.entities;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+@Entity
 public class User {
-
+    
     @Id
-    private String id;
+    @GeneratedValue
+    private Integer id;
 
     private String name;
 
     private String password;
 
-    public User() {
-    }
-
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
-
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

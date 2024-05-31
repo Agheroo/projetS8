@@ -4,21 +4,14 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - db-users
-      - db-logs
-  db-users:
-    image: mongo
+      - db
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=ThePassword
     ports:
-      - 27017:27017
+      - 3306:3306
     volumes:
-      - data-users:/data/db
-  db-logs:
-    image: neo4j
-    ports:
-      - 7474:7474
-      - 7687:7687
-    volumes:
-      - data-logs:/data
+      - data:/var/lib/mysql
 volumes:
-  data-users:
-  data-logs:
+  data:

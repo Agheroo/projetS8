@@ -1,8 +1,8 @@
 package org.univamu.polytech.backend.repositories;
 
-import org.springframework.data.neo4j.repository.Neo4jRepository;
-import org.univamu.polytech.backend.nodes.Player;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.univamu.polytech.backend.entities.Player;
 
-public interface PlayerRepository extends Neo4jRepository<Player, String> {
+public interface PlayerRepository extends JpaRepository<Player, String> {
     
 }

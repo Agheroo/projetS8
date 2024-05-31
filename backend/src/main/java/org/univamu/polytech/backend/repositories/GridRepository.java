@@ -1,8 +1,8 @@
 package org.univamu.polytech.backend.repositories;
 
-import org.springframework.data.neo4j.repository.Neo4jRepository;
-import org.univamu.polytech.backend.nodes.Grid;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.univamu.polytech.backend.entities.Grid;
 
-public interface GridRepository extends Neo4jRepository<Grid, Long> {
-    
+public interface GridRepository extends JpaRepository<Grid, Integer> {
+
 }

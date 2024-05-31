@@ -1,8 +1,8 @@
 package org.univamu.polytech.backend.repositories;
 
-import org.springframework.data.neo4j.repository.Neo4jRepository;
-import org.univamu.polytech.backend.nodes.Event;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.univamu.polytech.backend.entities.Event;
 
-public interface EventRepository extends Neo4jRepository<Event, Long> {
+public interface EventRepository extends JpaRepository<Event, Integer> {
     
 }
