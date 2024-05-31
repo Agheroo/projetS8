@@ -36,10 +36,18 @@ public class GridPlayerController {
         return gridPlayerRepository.findAll();
     }
 
+    @GetMapping("/{idGrid}/{idPlayer}")
+    public void getGridPlayer(@PathParam("idGrid") Integer idGrid, @PathParam("idPlayer") String idPlayer) {
+        GridPlayerId gridPlayerId = new GridPlayerId();
+        gridPlayerId.setGrid(idGrid);
+        gridPlayerId.setPlayer(idPlayer);
+        gridPlayerRepository.findById(gridPlayerId);
+    }
+
     @PostMapping("")
     public GridPlayer postGridPlayer(@RequestBody GridPlayer gridPlayer) {
-        gridPlayer.setGrid(gridRepository.findById(gridPlayer.getGrid().getId()).get());
-        gridPlayer.setPlayer(playerRepository.findById(gridPlayer.getPlayer().getId()).get());
+        gridPlayer.setGrid(gridRepository.findById(gridPlayer.getId().getGrid()).get());
+        gridPlayer.setPlayer(playerRepository.findById(gridPlayer.getId().getPlayer()).get());
         return gridPlayerRepository.save(gridPlayer);
     }
 
@@ -50,8 +58,8 @@ public class GridPlayerController {
         gridPlayerId.setGrid(idGrid);
         gridPlayerId.setPlayer(idPlayer);
         gridPlayer.setId(gridPlayerId);
-        gridPlayer.setGrid(gridRepository.findById(gridPlayer.getGrid().getId()).get());
-        gridPlayer.setPlayer(playerRepository.findById(gridPlayer.getPlayer().getId()).get());
+        gridPlayer.setGrid(gridRepository.findById(gridPlayer.getId().getGrid()).get());
+        gridPlayer.setPlayer(playerRepository.findById(gridPlayer.getId().getPlayer()).get());
         return gridPlayerRepository.save(gridPlayer);
     }
 

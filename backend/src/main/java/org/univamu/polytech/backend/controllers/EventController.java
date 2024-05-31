@@ -32,6 +32,11 @@ public class EventController {
         return eventRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public void getEvent(@PathParam("id") Integer id) {
+        eventRepository.findById(id);
+    }
+
     @PostMapping("")
     public Event postEvent(@RequestBody Event event) {
         GridPlayerId gridPlayerId = new GridPlayerId();

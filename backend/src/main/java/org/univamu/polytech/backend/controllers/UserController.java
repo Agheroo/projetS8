@@ -27,6 +27,11 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public void getUser(@PathParam("id") Integer id) {
+        userRepository.findById(id);
+    }
+
     @PostMapping("")
     public User postUser(@RequestBody User user) {
         return userRepository.save(user);

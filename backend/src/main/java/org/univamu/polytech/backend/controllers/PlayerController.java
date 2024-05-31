@@ -27,6 +27,11 @@ public class PlayerController {
         return playerRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public void getPlayer(@PathParam("id") String id) {
+        playerRepository.findById(id);
+    }
+
     @PostMapping("")
     public Player postPlayer(@RequestBody Player player) {
         return playerRepository.save(player);

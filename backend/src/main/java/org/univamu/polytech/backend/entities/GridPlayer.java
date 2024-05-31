@@ -1,14 +1,18 @@
 package org.univamu.polytech.backend.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import org.univamu.polytech.backend.embeddables.GridPlayerId;
 import org.univamu.polytech.backend.enums.AssistMode;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class GridPlayer {
@@ -18,10 +22,12 @@ public class GridPlayer {
 
     @MapsId("grid")
     @ManyToOne
+    @JsonManagedReference
     private Grid grid;
 
     @MapsId("player")
     @ManyToOne
+    @JsonManagedReference
     private Player player;
 
     private Date date;
@@ -29,6 +35,9 @@ public class GridPlayer {
     private AssistMode assistMode;
 
     private Integer score;
+
+    @OneToMany(mappedBy = "gridPlayer")
+    private List<Event> events;
 
     public GridPlayerId getId() {
         return id;
@@ -76,5 +85,13 @@ public class GridPlayer {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }

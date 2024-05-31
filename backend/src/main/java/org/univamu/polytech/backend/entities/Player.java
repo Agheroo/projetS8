@@ -1,7 +1,12 @@
 package org.univamu.polytech.backend.entities;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Player {
@@ -12,6 +17,10 @@ public class Player {
     private String name;
 
     private Float avgScore;
+
+    @OneToMany(mappedBy = "player")
+    @JsonBackReference
+    private List<GridPlayer> gridPlayers;
 
     public String getId() {
         return id;
@@ -35,5 +44,13 @@ public class Player {
 
     public void setAvgScore(Float avgScore) {
         this.avgScore = avgScore;
+    }
+
+    public List<GridPlayer> getGridPlayers() {
+        return gridPlayers;
+    }
+
+    public void setGridPlayers(List<GridPlayer> gridPlayers) {
+        this.gridPlayers = gridPlayers;
     }
 }

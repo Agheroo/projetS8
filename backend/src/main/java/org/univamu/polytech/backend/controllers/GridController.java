@@ -27,6 +27,11 @@ public class GridController {
         return gridRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public void getGrid(@PathParam("id") Integer id) {
+        gridRepository.findById(id);
+    }
+
     @PostMapping("")
     public Grid postGrid(@RequestBody Grid grid) {
         return gridRepository.save(grid);
