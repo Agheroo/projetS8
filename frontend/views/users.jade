@@ -1,0 +1,39 @@
+extends layout
+
+block form
+  .form-container
+    .form__group
+      input(type="text", class="input-group__input", placeholder = "Nom")#user-name.form__field
+      label(class="input-group__label", for="user-name").form__label Nom
+
+
+    //TODO : Link with back end send form
+    .card-container-bottom
+      a.button(href = "/users-temp") Rechercher
+    
+
+block main-content
+  div.main-content
+    h2.welcome-phrase Apprenez-en plus sur les <span class = "underlined-color">activités</span> d'un joueur
+    br
+    p.brief-animated Recherchez le nom d'un joueur choix et regardez ses performances (les détails de ses logs seront disponibles)
+
+    block form
+
+
+
+block navbar
+  .navbar 
+    .navbar-left
+      a#app-title(href = "/") #{app_name}
+
+
+    .navbar-mid
+      a.navbar-mid-link(href = "/") Accueil
+      each page in pages
+        a.navbar-mid-link(href = page.link) #{page.name}
+
+
+    .navbar-right
+      // TODO: link with connexion link with back-end here
+      a(href = "/connect") Connexion

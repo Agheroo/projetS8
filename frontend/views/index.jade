@@ -1,0 +1,42 @@
+extends layout
+
+block description 
+  #summary
+      each page in pages
+        .card
+          .card-container-top
+            h2= page.name
+          .card-container-mid-bottom
+            .card-container-mid
+              p= page.desc
+            .card-container-bottom
+              a.button(href = page.link) En savoir plus
+      
+
+
+block main-content
+  .main-content
+
+    .title-div
+      h1 #{app_name}
+    br
+    h2.welcome-phrase Bienvenue dans l'espace de visualisation des logs
+
+    block description
+
+
+block navbar
+  .navbar 
+    .navbar-left
+      a#app-title(href = "/") #{app_name}
+
+
+    .navbar-mid
+      a.navbar-mid-link(href = "/") Accueil
+      each page in pages
+        a.navbar-mid-link(href = page.link) #{page.name}
+
+
+    .navbar-right
+      // TODO: link with connexion link with back-end here
+      a(href = "/connect") Connexion

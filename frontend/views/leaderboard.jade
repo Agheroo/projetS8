@@ -1,0 +1,46 @@
+extends layout
+
+block form
+
+    table.leaderboard
+        thead
+        tr
+            th Rang 
+            th Nom 
+            th Score moyen 
+            th Meilleur temps
+        each user in users 
+            tr
+                td #{user.rank}
+                td #{user.name}
+                td #{user.avgScore}
+                td #{user.bestScore}
+
+
+    
+
+block main-content
+  div.main-content
+    h2.welcome-phrase Hissez-vous au <span class = "underlined-color">top</span>
+    br
+    p.brief-animated Comparez-vous aux meilleurs joueurs de Word-it et tentez d'améliorer vos scores !
+
+    block form
+
+
+
+block navbar
+  .navbar 
+    .navbar-left
+      a#app-title(href = "/") #{app_name}
+
+
+    .navbar-mid
+      a.navbar-mid-link(href = "/") Accueil
+      each page in pages
+        a.navbar-mid-link(href = page.link) #{page.name}
+
+
+    .navbar-right
+      // TODO: link with connexion link with back-end here
+      a(href = "/connect") Connexion

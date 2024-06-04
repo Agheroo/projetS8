@@ -1,0 +1,57 @@
+extends layout
+
+block form
+  .form-container
+    .form__group
+      input(type="text", class="input-group__input", placeholder = "Topic")#topic-input.form__field
+      label(class="input-group__label", for="topic-input").form__label Topic
+
+    br
+    h1 Difficulté
+    br
+    form.difficulty-container
+      input(input type="radio", name="select-difficulty", value="0")#radio-easy
+      label(for="radio-easy")
+        h2 Easy
+        p On s'échauffe un peu
+      input(input type="radio", name="select-difficulty", value="1")#radio-medium
+      label(for="radio-medium")
+        h2 Medium
+        p Histoire de réviser
+      input(input type="radio", name="select-difficulty", value="2")#radio-hard
+      label(for="radio-hard")
+        h2 Hard
+        p Pour le challenge
+    br
+
+
+    //TODO : Link with back end send form
+    .card-container-bottom
+      a.button(href = "/puzzle-temp") Rechercher
+    
+
+block main-content
+  div.main-content
+    h2.welcome-phrase Obtenez <span class = "underlined-color">l'essentiel</span> des informations d'un puzzle
+    br
+    p.brief-animated Recherchez le puzzle de votre choix avec les critères ci-dessous et obnubilez-vous par les statistiques !
+
+    block form
+
+
+
+block navbar
+  .navbar 
+    .navbar-left
+      a#app-title(href = "/") #{app_name}
+
+
+    .navbar-mid
+      a.navbar-mid-link(href = "/") Accueil
+      each page in pages
+        a.navbar-mid-link(href = page.link) #{page.name}
+
+
+    .navbar-right
+      // TODO: link with connexion link with back-end here
+      a(href = "/connect") Connexion

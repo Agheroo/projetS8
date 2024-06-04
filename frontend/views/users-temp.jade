@@ -1,0 +1,70 @@
+extends layout
+
+block form
+
+    table.leaderboard
+        thead
+        tr
+          th Thème 
+          th Difficulté 
+          th Score
+          th Temps
+          th Assistance
+          th Logfile
+        each puzzle in puzzles 
+
+            //Converting raw data to string for better display
+            - let diffstr;
+            - let assistedstr;
+            if puzzle.diff == 0
+                - diffstr = "Easy";
+            else if puzzle.diff == 1
+                - diffstr = "Medium";
+            else if puzzle.diff == 2
+                - diffstr = "Hard";
+            if puzzle.assisted == 0
+                - assistedstr = "None";
+            else if puzzle.assisted == 1
+                - assistedstr = "Letter";
+            else if puzzle.assisted == 2
+                - assistedstr = "Word";
+
+            tr
+              td #{puzzle.topic}
+              td #{diffstr}
+              td #{puzzle.score}
+              td #{puzzle.time}
+              td #{assistedstr}
+              td.download-container 
+                a(href = "../images/download.png", download = "zouzizaza.png")
+                  img(src = "../images/download.png")
+
+
+    
+
+block main-content
+  div.main-content
+    //TODO get theme & difficulty of puzzle according to back end
+    h2.welcome-phrase Thème <span class = "underlined-color">Linux</span>
+    br
+    p.brief-animated Difficulté <span class = "underlined-color">Facile</span>
+
+    block form
+
+
+
+block navbar
+  .navbar 
+    .navbar-left
+      a#app-title(href = "/") #{app_name}
+
+
+    .navbar-mid
+      a.navbar-mid-link(href = "/") Accueil
+      each page in pages
+        a.navbar-mid-link(href = page.link) #{page.name}
+
+
+    .navbar-right
+      // TODO: link with connexion link with back-end here
+      a(href = "/connect") Connexion
