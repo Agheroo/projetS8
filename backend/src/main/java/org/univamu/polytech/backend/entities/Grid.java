@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.univamu.polytech.backend.enums.Difficulty;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -23,8 +23,16 @@ public class Grid {
     private Float avgScore;
 
     @OneToMany(mappedBy = "grid")
-    @JsonBackReference
+    @JsonIgnore
     private List<GridPlayer> gridPlayers;
+
+    public Grid() {
+    }
+
+    public Grid(String topic, Difficulty difficulty) {
+        this.topic = topic;
+        this.difficulty = difficulty;
+    }
 
     public Integer getId() {
         return id;

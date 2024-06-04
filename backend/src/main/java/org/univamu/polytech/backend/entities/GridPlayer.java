@@ -6,7 +6,7 @@ import java.util.List;
 import org.univamu.polytech.backend.embeddables.GridPlayerId;
 import org.univamu.polytech.backend.enums.AssistMode;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -22,12 +22,10 @@ public class GridPlayer {
 
     @MapsId("grid")
     @ManyToOne
-    @JsonManagedReference
     private Grid grid;
 
     @MapsId("player")
     @ManyToOne
-    @JsonManagedReference
     private Player player;
 
     private Date date;
@@ -37,6 +35,7 @@ public class GridPlayer {
     private Integer score;
 
     @OneToMany(mappedBy = "gridPlayer")
+    @JsonIgnore
     private List<Event> events;
 
     public GridPlayerId getId() {
