@@ -1,0 +1,30 @@
+{
+    "event": {
+        "id": "int",
+        "date": "date",
+        "type": "int",
+        "newCharacter": "text",
+        "x": "int",
+        "y": "int",
+        "idGrid": "int",
+        "idPlayer": "int"
+    },
+    "grid": {
+        "id": "int",
+        "topic": "text",
+        "difficulty": "int",
+        "avgScore": "float"
+    },
+    "player": {
+        "id": "int",
+        "name": "text",
+        "avgScore": "float"
+    },
+    "gridPlayer": {
+        "idGrid": "int",
+        "idPlayer": "int",
+        "date": "date",
+        "assistMode": "int",
+        "score": "int"
+    }
+}
