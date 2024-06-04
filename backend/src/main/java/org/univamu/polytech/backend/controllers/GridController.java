@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import org.univamu.polytech.backend.enums.Difficulty;
 import org.univamu.polytech.backend.repositories.GridRepository;
 
 @RestController
+@CrossOrigin("http://frontend:3000")
 @RequestMapping("/grids")
 public class GridController {
 

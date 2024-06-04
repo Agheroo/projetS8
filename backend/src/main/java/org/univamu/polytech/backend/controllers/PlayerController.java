@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.univamu.polytech.backend.entities.Player;
 import org.univamu.polytech.backend.repositories.PlayerRepository;
 
 @RestController
+@CrossOrigin("http://frontend:3000")
 @RequestMapping("/players")
 public class PlayerController {
 

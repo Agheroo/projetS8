@@ -5,16 +5,12 @@ block form
     table.leaderboard
         thead
         tr
-            th Rang 
             th Nom 
-            th Score moyen 
-            th Meilleur temps
+            th Score moyen
         each user in users 
             tr
-                td #{user.rank}
                 td #{user.name}
                 td #{user.avgScore}
-                td #{user.bestScore}
 
 
     

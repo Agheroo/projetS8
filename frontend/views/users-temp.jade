@@ -8,7 +8,7 @@ block form
           th Thème 
           th Difficulté 
           th Score
-          th Temps
+          th Date
           th Assistance
           th Logfile
         each puzzle in puzzles 
@@ -30,11 +30,11 @@ block form
                 - assistedstr = "Word";
 
             tr
-              td #{puzzle.topic}
-              td #{diffstr}
+              td #{puzzle.grid.topic}
+              td #{puzzle.grid.difficulty}
               td #{puzzle.score}
-              td #{puzzle.time}
-              td #{assistedstr}
+              td #{puzzle.date}
+              td #{puzzle.assistMode}
               td.download-container 
                 a(href = "../images/download.png", download = "zouzizaza.png")
                   img(src = "../images/download.png")
@@ -45,9 +45,7 @@ block form
 block main-content
   div.main-content
     //TODO get theme & difficulty of puzzle according to back end
-    h2.welcome-phrase Thème <span class = "underlined-color">Linux</span>
-    br
-    p.brief-animated Difficulté <span class = "underlined-color">Facile</span>
+    h2.welcome-phrase Nom <span class = "underlined-color">#{puzzles[0].player.name}</span>
 
     block form
 

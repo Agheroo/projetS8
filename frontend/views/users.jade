@@ -1,16 +1,36 @@
 extends layout
 
 block form
-  .form-container
+  form(action="/users" method="GET").form-container
     .form__group
-      input(type="text", class="input-group__input", placeholder = "Nom")#user-name.form__field
+      input(type="text", name="name", class="input-group__input", placeholder = "Nom")#user-name.form__field
       label(class="input-group__label", for="user-name").form__label Nom
 
 
-    //TODO : Link with back end send form
     .card-container-bottom
-      a.button(href = "/users-temp") Rechercher
+      button.button(type="submit") Rechercher
+
+block users-list
+  if(users.length == 0)
+    p Aucun utilisateur ne correspond
+  
+  else
+    table.leaderboard#puzzle-list
+          thead
+          tr
+            th Nom
+            th Score moyen 
+            th Référence
+
+          each user in users
+            tr
+              td #{user.name}
+              td #{user.avgScore}
+              td.download-container 
+                a(href = "/users-temp/" + user.id)
+                  img(src = "../images/right-arrow.png")
     
+
 
 block main-content
   div.main-content
@@ -19,6 +39,8 @@ block main-content
     p.brief-animated Recherchez le nom d'un joueur choix et regardez ses performances (les détails de ses logs seront disponibles)
 
     block form
+
+    block users-list
 
 
 
