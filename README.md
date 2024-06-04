@@ -22,3 +22,8 @@ To run the application, simply run the following command in the terminal:
 ```powershell
 > docker compose up
 ```
+
+## Group members
+
+- Renan RÉAUX
+- Thibaud HEUB
